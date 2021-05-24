@@ -15,6 +15,7 @@ const Footer = () => {
     return (
         <footer>
             <p>created by {data.site.siteMetadata.author}</p>
+            <p>dark mode</p>
         </footer>
     );
 };
