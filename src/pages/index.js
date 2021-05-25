@@ -12,6 +12,8 @@ const IndexPage = () => {
     const [longTime, setLongTime] = useState(15);
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
+    const [tasks, setTasks] = useState([]);
+    const [newTask, setNewTask] = useState('');
 
     const handlePomoType = type => {
         setPomoType(type);
@@ -47,6 +49,15 @@ const IndexPage = () => {
             e.target.value < 100
         )
             setLongTime(e.target.value);
+    };
+
+    const handleNewTask = e => {
+        setNewTask(e.target.value);
+    };
+
+    const pushToTasks = () => {
+        setTasks(...tasks, newTask);
+        console.log(tasks);
     };
 
     const setTime = () => {
@@ -185,7 +196,13 @@ const IndexPage = () => {
 
                 <div className="tasks">
                     <div className="tasks-field">
-                        <div className="new-task">New task...</div>
+                        <div className="new-task">
+                            <input
+                                placeholder="Add new task"
+                                onChange={handleNewTask}
+                            />
+                            <button onClick={pushToTasks}>ADD</button>
+                        </div>
                     </div>
                 </div>
             </main>
