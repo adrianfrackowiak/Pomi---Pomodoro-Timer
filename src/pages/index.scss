@@ -6,6 +6,7 @@ html {
 }
 
 body {
+    transition: ease-in-out 300ms;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
@@ -17,6 +18,62 @@ body {
     }
     ::selection {
         background: #fafafa;
+    }
+}
+
+body.dark {
+    transition: ease-in-out 300ms;
+    background: #0d1730;
+    color: rgb(240, 240, 240);
+
+    ::-moz-selection {
+        background: #3b2db9;
+    }
+    ::selection {
+        background: #3b2db9;
+    }
+
+    header {
+        border-bottom: 1px solid rgba(243, 243, 243, 0.151);
+    }
+
+    main {
+        .pomo-timer {
+            background: #122041;
+
+            nav {
+                ul {
+                    li:hover {
+                        color: rgb(240, 240, 240);
+                        background: #3b2db9;
+                    }
+
+                    .li-active {
+                        color: rgb(240, 240, 240);
+                        background: #3b2db9;
+                    }
+                }
+            }
+
+            button {
+                color: #122041;
+            }
+
+            button:hover {
+                background: #d7d2ff;
+            }
+        }
+
+        .pomo-settings {
+            .inputs {
+                .input {
+                    input {
+                        background: #122041;
+                        color: rgb(240, 240, 240);
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -53,6 +110,10 @@ header {
     }
 }
 
+header.dark {
+    border-bottom: 1px solid rgba(231, 231, 231, 0.829);
+}
+
 footer {
     width: 100%;
     height: 5vh;
@@ -77,147 +138,153 @@ footer {
 
 main {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     padding: 2rem 0;
 
-    .pomo-timer {
-        margin: 2rem 0;
-        padding: 3rem 5rem;
-        color: #fafafa;
-        background: #70c4b8;
-
+    .pomo {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        nav {
-            ul {
-                list-style: none;
-                display: flex;
+        .pomo-timer {
+            margin: 2rem 0;
+            padding: 3rem 5rem;
+            color: #fafafa;
+            background: #70c4b8;
 
-                li {
-                    padding: 0.2rem;
-                    margin: 0 3rem;
-                    cursor: pointer;
-                    transition: ease-in-out 300ms;
-                }
-
-                li:hover {
-                    color: black;
-                    background: #86e2d5;
-                }
-
-                .li-active {
-                    color: black;
-                    background: #86e2d5;
-                }
-            }
-        }
-
-        .pomodoro {
             display: flex;
-
-            h3 {
-                font-size: 12rem;
-
-                display: flex;
-                align-items: center;
-            }
-
-            .pomodoro-minutes {
-                width: 10rem;
-
-                justify-content: flex-end;
-            }
-
-            .pomodoro-colon {
-                width: 6rem;
-
-                justify-content: center;
-            }
-
-            .pomodoro-seconds {
-                width: 10rem;
-
-                justify-content: flex-start;
-            }
-        }
-
-        button {
-            background: #fafafa;
-            color: #70c4b8;
-            font-size: 1.25rem;
-            border: none;
-            border-radius: 1rem;
-            cursor: pointer;
-            width: 16rem;
-            height: 3.5rem;
-            transition: ease-in-out 300ms;
-        }
-
-        button:hover {
-            background: #dffffb;
-        }
-    }
-
-    .pomo-settings {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 2rem 0 0 0;
-        width: 30rem;
-
-        h4 {
-            margin: 0 0 1rem 0;
-        }
-
-        .inputs {
-            width: 100%;
-            display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
 
-            .input {
+            nav {
+                ul {
+                    list-style: none;
+                    display: flex;
+
+                    li {
+                        padding: 0.2rem;
+                        margin: 0 3rem;
+                        cursor: pointer;
+                        transition: ease-in-out 300ms;
+                    }
+
+                    li:hover {
+                        color: black;
+                        background: #86e2d5;
+                    }
+
+                    .li-active {
+                        color: black;
+                        background: #86e2d5;
+                    }
+                }
+            }
+
+            .pomodoro {
                 display: flex;
-                align-items: center;
 
-                p {
-                    margin-right: 1rem;
+                h3 {
+                    font-size: 12rem;
+
+                    display: flex;
+                    align-items: center;
                 }
 
-                input {
-                    background: #70c4b8;
-                    color: black;
-                    border: none;
-                    outline: none;
+                .pomodoro-minutes {
+                    width: 10rem;
 
-                    text-align: center;
-
-                    width: 2rem;
-                    height: 2rem;
-
-                    font-weight: 500;
-                    font-size: 1rem;
+                    justify-content: flex-end;
                 }
+
+                .pomodoro-colon {
+                    width: 6rem;
+
+                    justify-content: center;
+                }
+
+                .pomodoro-seconds {
+                    width: 10rem;
+
+                    justify-content: flex-start;
+                }
+            }
+
+            button {
+                background: #fafafa;
+                color: #70c4b8;
+                font-size: 1.25rem;
+                border: none;
+                border-radius: 1rem;
+                cursor: pointer;
+                width: 16rem;
+                height: 3.5rem;
+                transition: ease-in-out 300ms;
+            }
+
+            button:hover {
+                background: #dffffb;
             }
         }
 
-        button {
-            width: 7rem;
-            height: 1.75rem;
-
+        .pomo-settings {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             margin: 2rem 0 0 0;
+            width: 30rem;
 
-            background: #fafafa;
-            color: black;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: ease-in-out 300ms;
+            h4 {
+                margin: 0 0 1rem 0;
+            }
+
+            .inputs {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .input {
+                    display: flex;
+                    align-items: center;
+
+                    p {
+                        margin-right: 1rem;
+                    }
+
+                    input {
+                        background: #70c4b8;
+                        color: black;
+                        border: none;
+                        outline: none;
+
+                        text-align: center;
+
+                        width: 2rem;
+                        height: 2rem;
+
+                        font-weight: 500;
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            button {
+                width: 7rem;
+                height: 1.75rem;
+
+                margin: 2rem 0 0 0;
+
+                background: #fafafa;
+                color: black;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: ease-in-out 300ms;
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { ThemeToggler } from 'gatsby-plugin-dark-mode';
 
 const Footer = ({ darkMode, setIsDarkMode }) => {
     const data = useStaticQuery(graphql`
@@ -15,13 +16,19 @@ const Footer = ({ darkMode, setIsDarkMode }) => {
     return (
         <footer>
             <p>created by {data.site.siteMetadata.author}</p>
+
             <div className="icons">
-                <p>🌧️</p>
-                {darkMode ? (
-                    <p onClick={() => setIsDarkMode(false)}>🌙</p>
-                ) : (
-                    <p onClick={() => setIsDarkMode(true)}>☀️</p>
-                )}
+                <ThemeToggler>
+                    {({ theme, toggleTheme }) => (
+                        <div>
+                            {theme === 'dark' ? (
+                                <p onClick={() => toggleTheme('light')}>☀️</p>
+                            ) : (
+                                <p onClick={() => toggleTheme('dark')}>🌙</p>
+                            )}
+                        </div>
+                    )}
+                </ThemeToggler>
             </div>
         </footer>
     );

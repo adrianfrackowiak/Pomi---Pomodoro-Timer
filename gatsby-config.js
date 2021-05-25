@@ -5,6 +5,7 @@ module.exports = {
         author: `@adrianfrackowiak 🤙`,
     },
     plugins: [
+        `gatsby-plugin-dark-mode`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-image`,
         {

@@ -99,86 +99,94 @@ const IndexPage = () => {
 
     return (
         <Layout darkMode={isDarkMode} setIsDarkMode={setIsDarkMode}>
-            <main className="pomo">
-                <div className="pomo-timer">
-                    <nav className="pomo-nav">
-                        <ul>
-                            {pomoType === 'pomo' ? (
-                                <li className="li-active">Pomodoro</li>
-                            ) : (
-                                <li onClick={() => handlePomoType('pomo')}>
-                                    Pomodoro
-                                </li>
-                            )}
-                            {pomoType === 'short' ? (
-                                <li className="li-active">Short Break</li>
-                            ) : (
-                                <li onClick={() => handlePomoType('short')}>
-                                    Short Break
-                                </li>
-                            )}
-                            {pomoType === 'long' ? (
-                                <li className="li-active">Long Break</li>
-                            ) : (
-                                <li onClick={() => handlePomoType('long')}>
-                                    Long Break
-                                </li>
-                            )}
-                        </ul>
-                    </nav>
-                    <div className="pomodoro">
-                        <h3 className="pomodoro-minutes">
-                            {minutes < 10 ? '0' : ''}
-                            {minutes}
-                        </h3>
-                        <h3 className="pomodoro-colon">:</h3>
-                        <h3 className="pomodoro-seconds">
-                            {seconds < 10 ? '0' : ''}
-                            {seconds}
-                        </h3>
+            <main>
+                <div className="pomo">
+                    <div className="pomo-timer">
+                        <nav className="pomo-nav">
+                            <ul>
+                                {pomoType === 'pomo' ? (
+                                    <li className="li-active">Pomodoro</li>
+                                ) : (
+                                    <li onClick={() => handlePomoType('pomo')}>
+                                        Pomodoro
+                                    </li>
+                                )}
+                                {pomoType === 'short' ? (
+                                    <li className="li-active">Short Break</li>
+                                ) : (
+                                    <li onClick={() => handlePomoType('short')}>
+                                        Short Break
+                                    </li>
+                                )}
+                                {pomoType === 'long' ? (
+                                    <li className="li-active">Long Break</li>
+                                ) : (
+                                    <li onClick={() => handlePomoType('long')}>
+                                        Long Break
+                                    </li>
+                                )}
+                            </ul>
+                        </nav>
+                        <div className="pomodoro">
+                            <h3 className="pomodoro-minutes">
+                                {minutes < 10 ? '0' : ''}
+                                {minutes}
+                            </h3>
+                            <h3 className="pomodoro-colon">:</h3>
+                            <h3 className="pomodoro-seconds">
+                                {seconds < 10 ? '0' : ''}
+                                {seconds}
+                            </h3>
+                        </div>
+                        {isTimerOn ? (
+                            <button onClick={() => setIsTimerOn(false)}>
+                                STOP
+                            </button>
+                        ) : (
+                            <button onClick={() => setIsTimerOn(true)}>
+                                START
+                            </button>
+                        )}
                     </div>
-                    {isTimerOn ? (
-                        <button onClick={() => setIsTimerOn(false)}>
-                            STOP
-                        </button>
-                    ) : (
-                        <button onClick={() => setIsTimerOn(true)}>
-                            START
-                        </button>
-                    )}
+                    <div className="pomo-settings">
+                        <h4>Settings</h4>
+                        <div className="inputs">
+                            <div className="input">
+                                <p>Pomodoro</p>
+                                <input
+                                    type="number"
+                                    name="pomo"
+                                    defaultValue={pomoTime}
+                                    onChange={handleNewTime}
+                                />
+                            </div>
+                            <div className="input">
+                                <p>Short Break</p>
+                                <input
+                                    type="number"
+                                    name="short"
+                                    defaultValue={shortTime}
+                                    onChange={handleNewTime}
+                                />
+                            </div>
+                            <div className="input">
+                                <p>Long Break</p>
+                                <input
+                                    type="number"
+                                    name="long"
+                                    defaultValue={longTime}
+                                    onChange={handleNewTime}
+                                />
+                            </div>
+                        </div>
+                        <button onClick={setTime}>SET</button>
+                    </div>
                 </div>
-                <div className="pomo-settings">
-                    <h4>Settings</h4>
-                    <div className="inputs">
-                        <div className="input">
-                            <p>Pomodoro</p>
-                            <input
-                                type="number"
-                                name="pomo"
-                                defaultValue={pomoTime}
-                                onChange={handleNewTime}
-                            />
-                        </div>
-                        <div className="input">
-                            <p>Short Break</p>
-                            <input
-                                type="number"
-                                name="short"
-                                defaultValue={shortTime}
-                                onChange={handleNewTime}
-                            />
-                        </div>
-                        <div className="input">
-                            <p>Long Break</p>
-                            <input
-                                type="number"
-                                name="long"
-                                defaultValue={longTime}
-                                onChange={handleNewTime}
-                            />
-                        </div>
+
+                <div className="tasks">
+                    <div className="tasks-field">
+                        <div className="new-task">New task...</div>
                     </div>
-                    <button onClick={setTime}>SET</button>
                 </div>
             </main>
         </Layout>
