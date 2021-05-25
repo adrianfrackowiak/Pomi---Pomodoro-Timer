@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
-const Footer = () => {
+const Footer = ({ darkMode, setIsDarkMode }) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -15,7 +15,14 @@ const Footer = () => {
     return (
         <footer>
             <p>created by {data.site.siteMetadata.author}</p>
-            <p>dark mode</p>
+            <div className="icons">
+                <p>🌧️</p>
+                {darkMode ? (
+                    <p onClick={() => setIsDarkMode(false)}>🌙</p>
+                ) : (
+                    <p onClick={() => setIsDarkMode(true)}>☀️</p>
+                )}
+            </div>
         </footer>
     );
 };

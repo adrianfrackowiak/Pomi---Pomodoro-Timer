@@ -20,6 +20,12 @@ body {
     }
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 button {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -57,6 +63,16 @@ footer {
     p {
         font-weight: 500;
     }
+
+    .icons {
+        display: flex;
+        align-items: flex-start;
+
+        p {
+            margin-left: 3rem;
+            cursor: pointer;
+        }
+    }
 }
 
 main {
@@ -68,9 +84,9 @@ main {
 
     .pomo-timer {
         margin: 2rem 0;
-        padding: 3rem;
+        padding: 3rem 5rem;
         color: #fafafa;
-        background: #275e563b;
+        background: #70c4b8;
 
         display: flex;
         flex-direction: column;
@@ -101,19 +117,107 @@ main {
             }
         }
 
-        h3 {
-            font-size: 12rem;
+        .pomodoro {
+            display: flex;
+
+            h3 {
+                font-size: 12rem;
+
+                display: flex;
+                align-items: center;
+            }
+
+            .pomodoro-minutes {
+                width: 10rem;
+
+                justify-content: flex-end;
+            }
+
+            .pomodoro-colon {
+                width: 6rem;
+
+                justify-content: center;
+            }
+
+            .pomodoro-seconds {
+                width: 10rem;
+
+                justify-content: flex-start;
+            }
         }
 
         button {
             background: #fafafa;
-            color: #469488;
+            color: #70c4b8;
             font-size: 1.25rem;
             border: none;
             border-radius: 1rem;
             cursor: pointer;
             width: 16rem;
             height: 3.5rem;
+            transition: ease-in-out 300ms;
+        }
+
+        button:hover {
+            background: #dffffb;
+        }
+    }
+
+    .pomo-settings {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0 0 0;
+        width: 30rem;
+
+        h4 {
+            margin: 0 0 1rem 0;
+        }
+
+        .inputs {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .input {
+                display: flex;
+                align-items: center;
+
+                p {
+                    margin-right: 1rem;
+                }
+
+                input {
+                    background: #70c4b8;
+                    color: black;
+                    border: none;
+                    outline: none;
+
+                    text-align: center;
+
+                    width: 2rem;
+                    height: 2rem;
+
+                    font-weight: 500;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        button {
+            width: 7rem;
+            height: 1.75rem;
+
+            margin: 2rem 0 0 0;
+
+            background: #fafafa;
+            color: black;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: ease-in-out 300ms;
         }
     }
 }

@@ -11,7 +11,10 @@ const Layout = props => {
                 <Header />
                 {props.children}
             </div>
-            <Footer />
+            <Footer
+                darkMode={props.darkMode}
+                setIsDarkMode={props.setIsDarkMode}
+            />
         </div>
     );
 };
