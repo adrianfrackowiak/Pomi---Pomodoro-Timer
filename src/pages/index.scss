@@ -38,38 +38,64 @@ body.dark {
     }
 
     main {
-        .pomo-timer {
-            background: #122041;
+        .pomo {
+            .pomo-timer {
+                background: #122041;
 
-            nav {
-                ul {
-                    li:hover {
-                        color: rgb(240, 240, 240);
-                        background: #3b2db9;
-                    }
+                nav {
+                    ul {
+                        li:hover {
+                            color: rgb(240, 240, 240);
+                            background: #3b2db9;
+                        }
 
-                    .li-active {
-                        color: rgb(240, 240, 240);
-                        background: #3b2db9;
+                        .li-active {
+                            color: rgb(240, 240, 240);
+                            background: #3b2db9;
+                        }
                     }
+                }
+
+                button {
+                    color: #122041;
+                }
+
+                button:hover {
+                    background: #d7d2ff;
                 }
             }
 
-            button {
-                color: #122041;
-            }
-
-            button:hover {
-                background: #d7d2ff;
+            .pomo-settings {
+                .inputs {
+                    .input {
+                        input {
+                            background: #122041;
+                            color: rgb(240, 240, 240);
+                        }
+                    }
+                }
             }
         }
 
-        .pomo-settings {
-            .inputs {
-                .input {
-                    input {
-                        background: #122041;
-                        color: rgb(240, 240, 240);
+        .tasks {
+            .tasks-field {
+                background: #122041;
+
+                .new-task {
+                    button {
+                        color: #122041;
+                    }
+                }
+
+                .tasks-list {
+                    .task {
+                        color: white;
+                        background: #0d1730;
+                    }
+
+                    .task-done {
+                        color: white;
+                        background: #152344;
                     }
                 }
             }
@@ -332,11 +358,78 @@ main {
                     margin: 2rem 0 0 0;
 
                     background: #fafafa;
-                    color: black;
+                    color: #70c4b8;
                     border: none;
                     border-radius: 0.5rem;
                     cursor: pointer;
                     transition: ease-in-out 300ms;
+                }
+            }
+
+            .tasks-list {
+                margin: 2rem 0 0 0;
+                width: 25vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .task {
+                    width: 100%;
+                    padding: 0.6rem 2rem;
+                    margin: 0 0 1rem 0;
+                    color: black;
+                    background: #86e2d5;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    p {
+                        width: 80%;
+                        word-wrap: break-word;
+                    }
+
+                    .task-buttons {
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            margin-left: 1rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .task-done {
+                    width: 100%;
+                    padding: 0.6rem 2rem;
+                    margin: 0 0 1rem 0;
+                    color: black;
+                    background: #57a599;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    p {
+                        width: 80%;
+                        word-wrap: break-word;
+                        text-decoration: line-through;
+                    }
+
+                    .task-buttons {
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            margin-left: 1rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }

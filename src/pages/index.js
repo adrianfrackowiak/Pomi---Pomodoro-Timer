@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Countdown from 'react-countdown';
 import './index.scss';
 import Layout from '../components/layout';
+import { FaCheck, FaTimes, FaMinus } from 'react-icons/fa';
+
+const taskList = [{ name: 'Use pomi todo list!', done: false }];
 
 const IndexPage = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,11 +15,18 @@ const IndexPage = () => {
     const [longTime, setLongTime] = useState(15);
     const [minutes, setMinutes] = useState(25);
     const [seconds, setSeconds] = useState(0);
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(taskList);
     const [newTask, setNewTask] = useState('');
+
+    useEffect(() => {
+        document.title = `${minutes < 10 ? '0' : ''}${minutes}:${
+            seconds < 10 ? '0' : ''
+        }${seconds} - Time left`;
+    });
 
     const handlePomoType = type => {
         setPomoType(type);
+        setIsTimerOn(false);
 
         if (type === 'pomo') {
             setMinutes(pomoTime);
@@ -55,9 +65,24 @@ const IndexPage = () => {
         setNewTask(e.target.value);
     };
 
-    const pushToTasks = () => {
-        setTasks(...tasks, newTask);
-        console.log(tasks);
+    const pushToTasks = e => {
+        e.preventDefault();
+        if (newTask !== '')
+            setTasks([...tasks, { name: newTask, done: false }]);
+
+        setNewTask('');
+    };
+
+    const removeTask = id => {
+        const list = [...tasks];
+        list.splice(id, 1);
+        setTasks(list);
+    };
+
+    const completeTask = id => {
+        const list = [...tasks];
+        list[id].done ? (list[id].done = false) : (list[id].done = true);
+        setTasks(list);
     };
 
     const setTime = () => {
@@ -198,11 +223,34 @@ const IndexPage = () => {
                     <div className="tasks-field">
                         <div className="new-task">
                             <input
+                                value={newTask}
                                 placeholder="Add new task"
                                 onChange={handleNewTask}
                             />
                             <button onClick={pushToTasks}>ADD</button>
                         </div>
+                        {tasks.map((todo, id) => (
+                            <div className="tasks-list">
+                                <div
+                                    className={todo.done ? 'task-done' : 'task'}
+                                    key={id}
+                                >
+                                    <p>{todo.name}</p>
+                                    <div className="task-buttons">
+                                        <p onClick={() => completeTask(id)}>
+                                            {todo.done ? (
+                                                <FaMinus />
+                                            ) : (
+                                                <FaCheck />
+                                            )}
+                                        </p>
+                                        <p onClick={() => removeTask(id)}>
+                                            <FaTimes />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </main>
