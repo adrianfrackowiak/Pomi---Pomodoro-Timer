@@ -1,3 +1,5 @@
+@import 'mixins';
+
 *,
 html {
     margin: 0;
@@ -117,6 +119,7 @@ input {
 button {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
+    border-radius: 100px;
 }
 
 header {
@@ -139,10 +142,26 @@ header {
         font-weight: 500;
         letter-spacing: 2px;
     }
-}
 
-header.dark {
-    border-bottom: 1px solid rgba(231, 231, 231, 0.829);
+    @include breakpoint(xs) {
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        p {
+            font-size: 0.9375rem;
+        }
+    }
+
+    @include breakpoint(xxs) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.5rem;
+        }
+    }
 }
 
 footer {
@@ -164,6 +183,10 @@ footer {
             margin-left: 3rem;
             cursor: pointer;
         }
+    }
+
+    @include breakpoint(xs) {
+        font-size: 0.7rem;
     }
 }
 
@@ -248,7 +271,6 @@ main {
                 color: #70c4b8;
                 font-size: 1.25rem;
                 border: none;
-                border-radius: 1rem;
                 cursor: pointer;
                 width: 16rem;
                 height: 3.5rem;
@@ -312,7 +334,6 @@ main {
                 background: #fafafa;
                 color: black;
                 border: none;
-                border-radius: 0.5rem;
                 cursor: pointer;
                 transition: ease-in-out 300ms;
             }
@@ -360,7 +381,6 @@ main {
                     background: #fafafa;
                     color: #70c4b8;
                     border: none;
-                    border-radius: 0.5rem;
                     cursor: pointer;
                     transition: ease-in-out 300ms;
                 }
@@ -430,6 +450,272 @@ main {
                             cursor: pointer;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    @include breakpoint(l) {
+        .pomo {
+            .pomo-timer {
+                padding: 2.1rem 3.5rem;
+
+                .pomodoro {
+                    h3 {
+                        font-size: 10.2rem;
+                    }
+                }
+
+                button {
+                    width: 13.6rem;
+                    height: 2.975rem;
+                }
+            }
+        }
+
+        .tasks {
+            .tasks-field {
+                padding: 2.1rem 3.5rem;
+            }
+        }
+    }
+
+    @include breakpoint(m) {
+        .pomo {
+            .pomo-timer {
+                nav {
+                    ul {
+                        li {
+                            font-size: 0.8rem;
+                            margin: 0 2rem;
+                        }
+                    }
+                }
+
+                .pomodoro {
+                    h3 {
+                        font-size: 8.16rem;
+                    }
+                }
+
+                button {
+                    width: 10.88rem;
+                    height: 2.38rem;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(s) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .pomo {
+            .pomo-timer {
+                padding: 3rem 5rem;
+
+                nav {
+                    ul {
+                        li {
+                            font-size: 1rem;
+                            margin: 0 2rem;
+                        }
+                    }
+                }
+
+                .pomodoro {
+                    h3 {
+                        font-size: 10.2rem;
+                    }
+
+                    .pomodoro-minutes {
+                        width: 7rem;
+                    }
+
+                    .pomodoro-colon {
+                        width: 4rem;
+                    }
+
+                    .pomodoro-seconds {
+                        width: 7rem;
+                    }
+                }
+
+                button {
+                    width: 13.6rem;
+                    height: 2.975rem;
+                }
+            }
+
+            .pomo-settings {
+                margin: 2rem 0;
+            }
+        }
+
+        .tasks {
+            width: 100%;
+            .tasks-field {
+                padding: 3rem 5rem;
+
+                .new-task {
+                    width: 30rem;
+                }
+
+                .tasks-list {
+                    width: 30rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xs) {
+        .pomo {
+            .pomo-timer {
+                padding: 2.1rem 2.1rem;
+                nav {
+                    ul {
+                        li {
+                            font-size: 0.8rem;
+                            margin: 0 1rem;
+                        }
+                    }
+                }
+
+                .pomodoro {
+                    h3 {
+                        font-size: 6rem;
+                    }
+
+                    .pomodoro-minutes {
+                        width: 7rem;
+                    }
+
+                    .pomodoro-colon {
+                        width: 4rem;
+                    }
+
+                    .pomodoro-seconds {
+                        width: 7rem;
+                    }
+                }
+
+                button {
+                    width: 10.88rem;
+                    height: 2.38rem;
+                    font-size: 1rem;
+                }
+            }
+
+            .pomo-settings {
+                .inputs {
+                    flex-direction: column;
+
+                    .input {
+                        margin: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        .tasks {
+            .tasks-field {
+                padding: 2.1rem 2.1rem;
+
+                .new-task {
+                    width: 20rem;
+                }
+
+                .tasks-list {
+                    width: 20rem;
+                }
+            }
+        }
+    }
+
+    @include breakpoint(xxs) {
+        font-size: 0.7rem;
+        .pomo {
+            .pomo-timer {
+                padding: 1.8rem 1.8rem;
+                nav {
+                    ul {
+                        li {
+                            font-size: 0.6rem;
+                            margin: 0 0.6rem;
+                        }
+                    }
+                }
+
+                .pomodoro {
+                    h3 {
+                        font-size: 4rem;
+                    }
+
+                    .pomodoro-minutes {
+                        width: 4rem;
+                    }
+
+                    .pomodoro-colon {
+                        width: 2rem;
+                    }
+
+                    .pomodoro-seconds {
+                        width: 4rem;
+                    }
+                }
+
+                button {
+                    width: 6.528rem;
+                    height: 1.428rem;
+                    font-size: 0.7rem;
+                }
+            }
+
+            .pomo-settings {
+                .inputs {
+                    flex-direction: column;
+
+                    .input {
+                        margin: 0.5rem;
+
+                        input {
+                            font-size: 0.7rem;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                        }
+                    }
+                }
+
+                button {
+                    width: 6.528rem;
+                    height: 1.428rem;
+                    font-size: 0.7rem;
+                }
+            }
+        }
+
+        .tasks {
+            .tasks-field {
+                padding: 1.8rem 1.8rem;
+
+                .new-task {
+                    width: 15rem;
+
+                    input {
+                        font-size: 0.7rem;
+                    }
+
+                    button {
+                        width: 6.528rem;
+                        height: 1.428rem;
+                        font-size: 0.7rem;
+                    }
+                }
+
+                .tasks-list {
+                    width: 15rem;
                 }
             }
         }

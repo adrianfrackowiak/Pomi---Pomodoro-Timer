@@ -1,10 +1,20 @@
+@import '../pages/mixins';
+
 .container {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 80vw;
 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    @include breakpoint(xl) {
+        max-width: 87.5vw;
+    }
+
+    @include breakpoint(m) {
+        max-width: 90vw;
+    }
 }
 
 .content {
