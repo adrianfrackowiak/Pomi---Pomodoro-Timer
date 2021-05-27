@@ -68,6 +68,11 @@ const Pomodoro = () => {
         }
     };
 
+    const playSound = () => {
+        let audio = new Audio('./sounds/alert.mp3');
+        audio.play();
+    };
+
     useEffect(() => {
         let interval = null;
         if (isTimerOn) {
@@ -79,6 +84,7 @@ const Pomodoro = () => {
             }, 1000);
             if (minutes === 0 && seconds === 0) {
                 clearInterval(interval);
+                playSound();
                 setTimeout(() => {
                     setIsTimerOn(false);
                     if (pomoType === 'pomo') {
