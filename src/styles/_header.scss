@@ -1,0 +1,41 @@
+header {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $l_transdark;
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 100;
+        letter-spacing: 5px;
+        margin: 0 2rem 0 0;
+    }
+
+    p {
+        font-size: 1.25rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+
+    @include breakpoint(xs) {
+        h1 {
+            font-size: 2.25rem;
+        }
+
+        p {
+            font-size: 0.9375rem;
+        }
+    }
+
+    @include breakpoint(xxs) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.5rem;
+        }
+    }
+}

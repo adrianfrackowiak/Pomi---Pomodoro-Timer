@@ -1,222 +1,16 @@
-@import 'mixins';
-
-*,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    transition: ease-in-out 300ms;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    background: #86e2d5;
-    color: rgb(10, 10, 12);
-
-    ::-moz-selection {
-        background: #fafafa;
-    }
-    ::selection {
-        background: #fafafa;
-    }
-}
-
-body.dark {
-    transition: ease-in-out 300ms;
-    background: #0d1730;
-    color: rgb(240, 240, 240);
-
-    ::-moz-selection {
-        background: #3b2db9;
-    }
-    ::selection {
-        background: #3b2db9;
-    }
-
-    header {
-        border-bottom: 1px solid rgba(243, 243, 243, 0.151);
-    }
-
-    main {
-        .pomo {
-            .pomo-timer {
-                background: #122041;
-
-                nav {
-                    ul {
-                        li:hover {
-                            color: rgb(240, 240, 240);
-                            background: #3b2db9;
-                        }
-
-                        .li-active {
-                            color: rgb(240, 240, 240);
-                            background: #3b2db9;
-                        }
-                    }
-                }
-
-                button {
-                    color: #122041;
-                }
-
-                button:hover {
-                    background: #d7d2ff;
-                }
-            }
-
-            .pomo-settings {
-                .inputs {
-                    .input {
-                        input {
-                            background: #122041;
-                            color: rgb(240, 240, 240);
-                        }
-                    }
-                }
-            }
-        }
-
-        .tasks {
-            .tasks-field {
-                background: #122041;
-
-                .new-task {
-                    button {
-                        color: #122041;
-                    }
-                }
-
-                .tasks-list {
-                    .task {
-                        color: white;
-                        background: #0d1730;
-                    }
-
-                    .task-done {
-                        color: white;
-                        background: #152344;
-                    }
-                }
-            }
-        }
-    }
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.9rem;
-}
-
-button {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    border-radius: 100px;
-}
-
-header {
-    width: 100%;
-    padding: 2rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid rgba(10, 10, 12, 0.151);
-
-    h1 {
-        font-size: 3rem;
-        font-weight: 100;
-        letter-spacing: 5px;
-        margin: 0 2rem 0 0;
-    }
-
-    p {
-        font-size: 1.25rem;
-        font-weight: 500;
-        letter-spacing: 2px;
-    }
-
-    @include breakpoint(xs) {
-        h1 {
-            font-size: 2.25rem;
-        }
-
-        p {
-            font-size: 0.9375rem;
-        }
-    }
-
-    @include breakpoint(xxs) {
-        h1 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            font-size: 0.5rem;
-        }
-    }
-}
-
-footer {
-    width: 100%;
-    height: 5vh;
-
-    display: flex;
-    justify-content: space-between;
-
-    p {
-        font-weight: 500;
-    }
-
-    .icons {
-        display: flex;
-        align-items: flex-start;
-
-        p {
-            margin-left: 3rem;
-            cursor: pointer;
-        }
-    }
-
-    @include breakpoint(xs) {
-        font-size: 0.7rem;
-    }
-}
-
 main {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     padding: 2rem 0;
 
     .pomo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
         .pomo-timer {
             margin: 2rem 0;
             padding: 3rem 5rem;
-            color: #fafafa;
-            background: #70c4b8;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            color: $l_white;
+            background: $l_lgreen;
 
             nav {
                 ul {
                     list-style: none;
-                    display: flex;
 
                     li {
                         padding: 0.2rem;
@@ -226,49 +20,43 @@ main {
                     }
 
                     li:hover {
-                        color: black;
-                        background: #86e2d5;
+                        color: $l_font;
+                        background: $l_bg;
                     }
 
                     .li-active {
                         color: black;
-                        background: #86e2d5;
+                        background: $l_bg;
                     }
                 }
             }
 
             .pomodoro {
-                display: flex;
-
                 h3 {
                     font-size: 12rem;
-
                     display: flex;
                     align-items: center;
                 }
 
                 .pomodoro-minutes {
                     width: 10rem;
-
                     justify-content: flex-end;
                 }
 
                 .pomodoro-colon {
                     width: 6rem;
-
                     justify-content: center;
                 }
 
                 .pomodoro-seconds {
                     width: 10rem;
-
                     justify-content: flex-start;
                 }
             }
 
             button {
-                background: #fafafa;
-                color: #70c4b8;
+                background: $l_white;
+                color: $l_lgreen;
                 font-size: 1.25rem;
                 border: none;
                 cursor: pointer;
@@ -276,17 +64,9 @@ main {
                 height: 3.5rem;
                 transition: ease-in-out 300ms;
             }
-
-            button:hover {
-                background: #dffffb;
-            }
         }
 
         .pomo-settings {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             margin: 2rem 0 0 0;
             width: 30rem;
 
@@ -296,21 +76,15 @@ main {
 
             .inputs {
                 width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
 
                 .input {
-                    display: flex;
-                    align-items: center;
-
                     p {
                         margin-right: 1rem;
                     }
 
                     input {
-                        background: #70c4b8;
-                        color: black;
+                        background: $l_lgreen;
+                        color: $l_font;
                         border: none;
                         outline: none;
 
@@ -331,8 +105,8 @@ main {
 
                 margin: 2rem 0 0 0;
 
-                background: #fafafa;
-                color: black;
+                background: $l_white;
+                color: $l_font;
                 border: none;
                 cursor: pointer;
                 transition: ease-in-out 300ms;
@@ -341,34 +115,21 @@ main {
     }
 
     .tasks {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
         .tasks-field {
             margin: 2rem 0;
             padding: 3rem 5rem;
-            color: #fafafa;
-            background: #70c4b8;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            color: $l_white;
+            background: $l_lgreen;
 
             .new-task {
                 width: 25vw;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
 
                 input {
                     width: 100%;
                     height: 3rem;
                     outline: none;
                     border: none;
-                    background: #fafafa;
+                    background: $l_white;
                     padding: 0 2rem;
                 }
 
@@ -378,8 +139,8 @@ main {
 
                     margin: 2rem 0 0 0;
 
-                    background: #fafafa;
-                    color: #70c4b8;
+                    background: $l_white;
+                    color: $l_lgreen;
                     border: none;
                     cursor: pointer;
                     transition: ease-in-out 300ms;
@@ -389,19 +150,13 @@ main {
             .tasks-list {
                 margin: 2rem 0 0 0;
                 width: 25vw;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
 
                 .task {
                     width: 100%;
                     padding: 0.6rem 2rem;
                     margin: 0 0 1rem 0;
-                    color: black;
-                    background: #86e2d5;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                    color: $l_font;
+                    background: $l_bg;
 
                     p {
                         width: 80%;
@@ -409,46 +164,18 @@ main {
                     }
 
                     .task-buttons {
-                        display: flex;
-                        align-items: center;
-
                         p {
                             margin-left: 1rem;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
                             cursor: pointer;
                         }
                     }
                 }
 
-                .task-done {
-                    width: 100%;
-                    padding: 0.6rem 2rem;
-                    margin: 0 0 1rem 0;
-                    color: black;
-                    background: #57a599;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                .done {
+                    background: $l_dgreen;
 
                     p {
-                        width: 80%;
-                        word-wrap: break-word;
                         text-decoration: line-through;
-                    }
-
-                    .task-buttons {
-                        display: flex;
-                        align-items: center;
-
-                        p {
-                            margin-left: 1rem;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            cursor: pointer;
-                        }
                     }
                 }
             }

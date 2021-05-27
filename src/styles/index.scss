@@ -1,0 +1,87 @@
+@import 'mixins';
+@import 'variables';
+
+@import 'dark';
+@import 'header';
+@import 'footer';
+@import 'main';
+
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    transition: ease-in-out 300ms;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    background: $l_bg;
+    color: $l_font;
+
+    ::-moz-selection {
+        background: $l_white;
+    }
+    ::selection {
+        background: $l_white;
+    }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    border-radius: 100px;
+}
+
+.fx {
+    display: flex;
+}
+
+.fx-cnt {
+    display: flex;
+    align-items: center;
+}
+
+.fx-cnt-cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fx-cnt-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fx-col-cnt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fx-spb-fxst {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.fx-spb-cnt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

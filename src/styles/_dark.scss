@@ -1,0 +1,77 @@
+body.dark {
+    transition: ease-in-out 300ms;
+    background: $d_bg;
+    color: $d_font;
+
+    ::-moz-selection {
+        background: $d_royal;
+    }
+    ::selection {
+        background: $d_royal;
+    }
+
+    header {
+        border-bottom: 1px solid $d_transwhite;
+    }
+
+    main {
+        .pomo {
+            .pomo-timer {
+                background: $d_navy;
+
+                nav {
+                    ul {
+                        li:hover {
+                            color: $d_font;
+                            background: $d_royal;
+                        }
+
+                        .li-active {
+                            color: $d_font;
+                            background: $d_royal;
+                        }
+                    }
+                }
+
+                button {
+                    color: $d_navy;
+                }
+            }
+
+            .pomo-settings {
+                .inputs {
+                    .input {
+                        input {
+                            background: $d_navy;
+                            color: $d_font;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tasks {
+            .tasks-field {
+                background: $d_navy;
+
+                .new-task {
+                    button {
+                        color: $d_navy;
+                    }
+                }
+
+                .tasks-list {
+                    .task {
+                        color: $l_white;
+                        background: $d_dnavy;
+                    }
+
+                    .task-done {
+                        color: $l_white;
+                        background: $d_lnavy;
+                    }
+                }
+            }
+        }
+    }
+}
