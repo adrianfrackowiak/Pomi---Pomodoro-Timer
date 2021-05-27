@@ -56,12 +56,15 @@ const Pomodoro = () => {
         if (pomoType === 'pomo') {
             setMinutes(pomoTime);
             setSeconds(0);
+            setIsTimerOn(false);
         } else if (pomoType === 'short') {
             setMinutes(shortTime);
             setSeconds(0);
+            setIsTimerOn(false);
         } else if (pomoType === 'long') {
             setMinutes(longTime);
             setSeconds(0);
+            setIsTimerOn(false);
         }
     };
 
