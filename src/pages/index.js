@@ -9,7 +9,7 @@ const IndexPage = () => {
 
     return (
         <Layout darkMode={isDarkMode} setIsDarkMode={setIsDarkMode}>
-            <main className="fx-spb-fxst">
+            <main>
                 <Pomodoro />
                 <Tasks />
             </main>
