@@ -157,7 +157,7 @@ const Pomodoro = () => {
                             onChange={handleNewTime}
                         />
                     </div>
-                    <div className="input">
+                    <div className="input fx-cnt">
                         <p>Short Break</p>
                         <input
                             type="number"
@@ -166,7 +166,7 @@ const Pomodoro = () => {
                             onChange={handleNewTime}
                         />
                     </div>
-                    <div className="input">
+                    <div className="input fx-cnt">
                         <p>Long Break</p>
                         <input
                             type="number"
