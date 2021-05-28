@@ -1,33 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const Pomodoro = () => {
-    const [isTimerOn, setIsTimerOn] = useState(false);
-    const [pomoType, setPomoType] = useState('pomo');
+function Pomodoro() {
+    const [mode, setMode] = useState('pomo');
     const [pomoTime, setPomoTime] = useState(25);
     const [shortTime, setShortTime] = useState(5);
     const [longTime, setLongTime] = useState(15);
-    const [minutes, setMinutes] = useState(25);
-    const [seconds, setSeconds] = useState(0);
 
-    useEffect(() => {
-        document.title = `${minutes < 10 ? '0' : ''}${minutes}:${
-            seconds < 10 ? '0' : ''
-        }${seconds} - Time left`;
-    });
+    const timeoutLeft = useRef(pomoTime * 60 * 1000);
+    const initialTimestampRef = useRef();
+    const [isRunning, setIsRunning] = useState(false);
+    const [time, setTime] = useState(pomoTime * 60 * 1000);
 
     const handlePomoType = type => {
-        setPomoType(type);
-        setIsTimerOn(false);
+        setMode(type);
+        setIsRunning(false);
 
         if (type === 'pomo') {
-            setMinutes(pomoTime);
-            setSeconds(0);
+            setTime(pomoTime * 60 * 1000);
+            timeoutLeft.current = pomoTime * 60 * 1000;
         } else if (type === 'short') {
-            setMinutes(shortTime);
-            setSeconds(0);
+            setTime(shortTime * 60 * 1000);
+            timeoutLeft.current = shortTime * 60 * 1000;
         } else if (type === 'long') {
-            setMinutes(longTime);
-            setSeconds(0);
+            setTime(longTime * 60 * 1000);
+            timeoutLeft.current = longTime * 60 * 1000;
         }
     };
 
@@ -52,19 +48,19 @@ const Pomodoro = () => {
             setLongTime(e.target.value);
     };
 
-    const setTime = () => {
-        if (pomoType === 'pomo') {
-            setMinutes(pomoTime);
-            setSeconds(0);
-            setIsTimerOn(false);
-        } else if (pomoType === 'short') {
-            setMinutes(shortTime);
-            setSeconds(0);
-            setIsTimerOn(false);
-        } else if (pomoType === 'long') {
-            setMinutes(longTime);
-            setSeconds(0);
-            setIsTimerOn(false);
+    const setNewTime = () => {
+        if (mode === 'pomo') {
+            setTime(pomoTime * 60 * 1000);
+            timeoutLeft.current = pomoTime * 60 * 1000;
+            setIsRunning(false);
+        } else if (mode === 'short') {
+            setTime(shortTime * 60 * 1000);
+            timeoutLeft.current = shortTime * 60 * 1000;
+            setIsRunning(false);
+        } else if (mode === 'long') {
+            setTime(longTime * 60 * 1000);
+            timeoutLeft.current = longTime * 60 * 1000;
+            setIsRunning(false);
         }
     };
 
@@ -74,61 +70,89 @@ const Pomodoro = () => {
     };
 
     useEffect(() => {
-        let interval = null;
-        if (isTimerOn) {
-            interval = setInterval(() => {
-                if (seconds === 0) {
-                    setSeconds(59);
-                    setMinutes(minutes - 1);
-                } else setSeconds(seconds - 1);
-            }, 1000);
-            if (minutes === 0 && seconds === 0) {
-                clearInterval(interval);
-                playSound();
-                setTimeout(() => {
-                    setIsTimerOn(false);
-                    if (pomoType === 'pomo') {
-                        setPomoType('short');
-                        setMinutes(shortTime);
-                        setSeconds(0);
-                    } else if (pomoType === 'short') {
-                        setPomoType('pomo');
-                        setMinutes(pomoTime);
-                        setSeconds(0);
-                    } else if (pomoType === 'long') {
-                        setPomoType('pomo');
-                        setMinutes(pomoTime);
-                        setSeconds(0);
-                    }
-                }, 3000);
-            }
-        } else if (!isTimerOn) {
-            clearInterval(interval);
+        if (!isRunning) {
+            return;
         }
 
-        return () => clearInterval(interval);
-    }, [isTimerOn, seconds]);
+        const intervalId = setInterval(run, 1000 / 60);
+
+        function run() {
+            setTime(
+                timeoutLeft.current -
+                    (performance.now() - initialTimestampRef.current)
+            );
+        }
+
+        if (Math.floor(time / 1000) === 0) {
+            clearInterval(intervalId);
+            playSound();
+            setIsRunning(false);
+            if (mode === 'pomo') {
+                setMode('short');
+                setTime(shortTime * 60 * 1000);
+            } else if (mode === 'short') {
+                setMode('pomo');
+                setTime(pomoTime * 60 * 1000);
+            } else if (mode === 'long') {
+                setMode('pomo');
+                setTime(pomoTime * 60 * 1000);
+            }
+        }
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [time, isRunning]);
+
+    useEffect(() => {
+        document.title = formatElapsedTime(time, 'title');
+    });
+
+    const start = () => {
+        initialTimestampRef.current = performance.now();
+        setIsRunning(true);
+    };
+
+    const pad = num => {
+        if (num < 10) {
+            return `0${num}`;
+        } else {
+            return num;
+        }
+    };
+
+    function formatElapsedTime(milliseconds, form) {
+        const mins = Math.floor(milliseconds / (1000 * 60));
+        milliseconds -= mins * (1000 * 60);
+
+        const seconds = Math.floor(milliseconds / 1000);
+        milliseconds -= seconds * 1000;
+
+        if (form === 'mins') return `${pad(mins)}`;
+        if (form === 'sec') return `${pad(seconds)}`;
+        if (form === 'title') return `${pad(mins)}:${pad(seconds)}`;
+    }
 
     return (
         <div className="pomo fx-col-cnt">
             <div className="pomo-timer fx-col-cnt">
                 <nav className="pomo-nav">
                     <ul className="fx">
-                        {pomoType === 'pomo' ? (
+                        {mode === 'pomo' ? (
                             <li className="li-active">Pomodoro</li>
                         ) : (
                             <li onClick={() => handlePomoType('pomo')}>
                                 Pomodoro
                             </li>
                         )}
-                        {pomoType === 'short' ? (
+                        {mode === 'short' ? (
                             <li className="li-active">Short Break</li>
                         ) : (
                             <li onClick={() => handlePomoType('short')}>
                                 Short Break
                             </li>
                         )}
-                        {pomoType === 'long' ? (
+                        {mode === 'long' ? (
                             <li className="li-active">Long Break</li>
                         ) : (
                             <li onClick={() => handlePomoType('long')}>
@@ -139,20 +163,14 @@ const Pomodoro = () => {
                 </nav>
                 <div className="pomodoro fx">
                     <h3 className="pomodoro-minutes">
-                        {minutes < 10 ? '0' : ''}
-                        {minutes}
+                        {formatElapsedTime(time, 'mins')}
                     </h3>
                     <h3 className="pomodoro-colon">:</h3>
                     <h3 className="pomodoro-seconds">
-                        {seconds < 10 ? '0' : ''}
-                        {seconds}
+                        {formatElapsedTime(time, 'sec')}
                     </h3>
                 </div>
-                {isTimerOn ? (
-                    <button onClick={() => setIsTimerOn(false)}>STOP</button>
-                ) : (
-                    <button onClick={() => setIsTimerOn(true)}>START</button>
-                )}
+                <button onClick={start}>Start</button>
             </div>
             <div className="pomo-settings fx-col-cnt">
                 <h4>Settings</h4>
@@ -185,10 +203,10 @@ const Pomodoro = () => {
                         />
                     </div>
                 </div>
-                <button onClick={setTime}>SET</button>
+                <button onClick={setNewTime}>SET</button>
             </div>
         </div>
     );
-};
+}
 
 export default Pomodoro;
