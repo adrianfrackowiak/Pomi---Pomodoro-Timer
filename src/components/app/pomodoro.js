@@ -113,6 +113,11 @@ function Pomodoro() {
         setIsRunning(true);
     };
 
+    const stop = () => {
+        timeoutLeft.current = time;
+        setIsRunning(false);
+    };
+
     const pad = num => {
         if (num < 10) {
             return `0${num}`;
@@ -170,7 +175,11 @@ function Pomodoro() {
                         {formatElapsedTime(time, 'sec')}
                     </h3>
                 </div>
-                <button onClick={start}>Start</button>
+                {isRunning ? (
+                    <button onClick={stop}>STOP</button>
+                ) : (
+                    <button onClick={start}>START</button>
+                )}
             </div>
             <div className="pomo-settings fx-col-cnt">
                 <h4>Settings</h4>
