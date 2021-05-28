@@ -22,9 +22,17 @@ const Footer = ({ darkMode, setIsDarkMode }) => {
                     {({ theme, toggleTheme }) => (
                         <div>
                             {theme === 'dark' ? (
-                                <p onClick={() => toggleTheme('light')}>☀️</p>
+                                <p onClick={() => toggleTheme('light')}>
+                                    <span role="img" aria-label="Sun">
+                                        ☀️
+                                    </span>
+                                </p>
                             ) : (
-                                <p onClick={() => toggleTheme('dark')}>🌙</p>
+                                <p onClick={() => toggleTheme('dark')}>
+                                    <span role="img" aria-label="Moon">
+                                        🌙
+                                    </span>
+                                </p>
                             )}
                         </div>
                     )}

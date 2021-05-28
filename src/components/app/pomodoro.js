@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-function Pomodoro() {
+function Pomodoro({ alert, click }) {
     const [mode, setMode] = useState('pomo');
     const [pomoTime, setPomoTime] = useState(25);
     const [shortTime, setShortTime] = useState(5);
@@ -64,8 +64,8 @@ function Pomodoro() {
         }
     };
 
-    const playSound = () => {
-        let audio = new Audio('./sounds/alert.mp3');
+    const playSound = sound => {
+        let audio = new Audio(sound);
         audio.play();
     };
 
@@ -85,7 +85,7 @@ function Pomodoro() {
 
         if (Math.floor(time / 1000) === 0) {
             clearInterval(intervalId);
-            playSound();
+            playSound(alert);
             setIsRunning(false);
             if (mode === 'pomo') {
                 setMode('short');
@@ -114,11 +114,13 @@ function Pomodoro() {
     const start = () => {
         initialTimestampRef.current = performance.now();
         setIsRunning(true);
+        playSound(click);
     };
 
     const stop = () => {
         timeoutLeft.current = time;
         setIsRunning(false);
+        playSound(click);
     };
 
     const pad = num => {
