@@ -90,12 +90,15 @@ function Pomodoro() {
             if (mode === 'pomo') {
                 setMode('short');
                 setTime(shortTime * 60 * 1000);
+                timeoutLeft.current = shortTime * 60 * 1000;
             } else if (mode === 'short') {
                 setMode('pomo');
                 setTime(pomoTime * 60 * 1000);
+                timeoutLeft.current = pomoTime * 60 * 1000;
             } else if (mode === 'long') {
                 setMode('pomo');
                 setTime(pomoTime * 60 * 1000);
+                timeoutLeft.current = pomoTime * 60 * 1000;
             }
         }
 
