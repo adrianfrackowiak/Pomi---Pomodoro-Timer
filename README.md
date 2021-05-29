@@ -9,7 +9,7 @@ Pomi is simple to use:
 - set pomo time and breaks time
 - turn on pomi and study!
 
-🌙 If you want, you can simply change theme to dark!
+🌙 If you want, you can simply change theme to light or dark! ☀️
 
 ## Technologies used in Pomi:
 - react js
