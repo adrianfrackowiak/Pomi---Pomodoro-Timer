@@ -43,7 +43,7 @@ const Tasks = () => {
                     <button onClick={pushToTasks}>ADD</button>
                 </div>
                 {tasks.map((todo, id) => (
-                    <div className="tasks-list fx-cnt-col">
+                    <list className="tasks-list fx-cnt-col">
                         <div
                             className={
                                 todo.done
@@ -54,21 +54,21 @@ const Tasks = () => {
                         >
                             <p>{todo.name}</p>
                             <div className="task-buttons fx-cnt">
-                                <p
+                                <button
                                     className="fx-cnt-cnt"
                                     onClick={() => completeTask(id)}
                                 >
                                     {todo.done ? <FaMinus /> : <FaCheck />}
-                                </p>
-                                <p
+                                </button>
+                                <button
                                     className="fx-cnt-cnt"
                                     onClick={() => removeTask(id)}
                                 >
                                     <FaTimes />
-                                </p>
+                                </button>
                             </div>
                         </div>
-                    </div>
+                    </list>
                 ))}
             </div>
         </div>
