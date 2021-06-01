@@ -149,36 +149,59 @@ function Pomodoro({ alert, click }) {
                 <nav className="pomo-nav">
                     <ul className="fx">
                         {mode === 'pomo' ? (
-                            <li className="li-active">Pomodoro</li>
+                            <li>
+                                <button
+                                    className="active"
+                                    onClick={() => handlePomoType('pomo')}
+                                >
+                                    Pomodoro
+                                </button>
+                            </li>
                         ) : (
-                            <li onClick={() => handlePomoType('pomo')}>
-                                Pomodoro
+                            <li>
+                                <button onClick={() => handlePomoType('pomo')}>
+                                    Pomodoro
+                                </button>
                             </li>
                         )}
                         {mode === 'short' ? (
-                            <li className="li-active">Short Break</li>
-                        ) : (
-                            <li onClick={() => handlePomoType('short')}>
-                                Short Break
+                            <li>
+                                <button
+                                    className="active"
+                                    onClick={() => handlePomoType('short')}
+                                >
+                                    Short Break
+                                </button>
                             </li>
+                        ) : (
+                            <button onClick={() => handlePomoType('short')}>
+                                Short Break
+                            </button>
                         )}
                         {mode === 'long' ? (
-                            <li className="li-active">Long Break</li>
-                        ) : (
-                            <li onClick={() => handlePomoType('long')}>
-                                Long Break
+                            <li>
+                                <button
+                                    className="active"
+                                    onClick={() => handlePomoType('long')}
+                                >
+                                    Long Break
+                                </button>
                             </li>
+                        ) : (
+                            <button onClick={() => handlePomoType('long')}>
+                                Long Break
+                            </button>
                         )}
                     </ul>
                 </nav>
                 <div className="pomodoro fx">
-                    <h3 className="pomodoro-minutes">
+                    <p className="pomodoro-minutes">
                         {formatElapsedTime(time, 'mins')}
-                    </h3>
-                    <h3 className="pomodoro-colon">:</h3>
-                    <h3 className="pomodoro-seconds">
+                    </p>
+                    <p className="pomodoro-colon">:</p>
+                    <p className="pomodoro-seconds">
                         {formatElapsedTime(time, 'sec')}
-                    </h3>
+                    </p>
                 </div>
                 {isRunning ? (
                     <button onClick={stop}>STOP</button>

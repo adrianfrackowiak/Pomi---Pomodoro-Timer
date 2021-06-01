@@ -15,19 +15,26 @@ main {
                 ul {
                     list-style: none;
 
-                    li {
+                    button {
                         padding: 0.2rem;
                         margin: 0 3rem;
                         cursor: pointer;
                         transition: ease-in-out 300ms;
+                        background: none;
+                        color: black;
+                        font-size: 0.9rem;
+                        font-weight: 400;
+                        width: auto;
+                        height: auto;
+                        border-radius: 0;
                     }
 
-                    li:hover {
+                    button:hover {
                         color: $l_font;
                         background: $l_bg;
                     }
 
-                    .li-active {
+                    .active {
                         color: black;
                         background: $l_bg;
                     }
@@ -35,10 +42,11 @@ main {
             }
 
             .pomodoro {
-                h3 {
+                p {
                     font-size: 12rem;
                     display: flex;
                     align-items: center;
+                    font-weight: 700;
                 }
 
                 .pomodoro-minutes {
@@ -191,7 +199,7 @@ main {
                 padding: 2.1rem 3.5rem;
 
                 .pomodoro {
-                    h3 {
+                    p {
                         font-size: 10.2rem;
                     }
                 }
@@ -215,7 +223,7 @@ main {
             .pomo-timer {
                 nav {
                     ul {
-                        li {
+                        button {
                             font-size: 0.8rem;
                             margin: 0 2rem;
                         }
@@ -223,7 +231,7 @@ main {
                 }
 
                 .pomodoro {
-                    h3 {
+                    p {
                         font-size: 8.16rem;
                     }
                 }
@@ -248,7 +256,7 @@ main {
 
                 nav {
                     ul {
-                        li {
+                        button {
                             font-size: 1rem;
                             margin: 0 2rem;
                         }
@@ -256,7 +264,7 @@ main {
                 }
 
                 .pomodoro {
-                    h3 {
+                    p {
                         font-size: 10.2rem;
                     }
 
@@ -306,7 +314,7 @@ main {
                 padding: 2.1rem 2.1rem;
                 nav {
                     ul {
-                        li {
+                        button {
                             font-size: 0.8rem;
                             margin: 0 1rem;
                         }
@@ -314,7 +322,7 @@ main {
                 }
 
                 .pomodoro {
-                    h3 {
+                    p {
                         font-size: 6rem;
                     }
 
@@ -372,7 +380,7 @@ main {
                 padding: 1.8rem 1.8rem;
                 nav {
                     ul {
-                        li {
+                        button {
                             font-size: 0.6rem;
                             margin: 0 0.6rem;
                         }
@@ -380,7 +388,7 @@ main {
                 }
 
                 .pomodoro {
-                    h3 {
+                    p {
                         font-size: 4rem;
                     }
 
