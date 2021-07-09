@@ -21,12 +21,15 @@ body.dark {
 
                 nav {
                     ul {
-                        li:hover {
+                        button {
+                            color: $l_white;
+                        }
+                        button:hover {
                             color: $d_font;
                             background: $d_royal;
                         }
 
-                        .li-active {
+                        .active {
                             color: $d_font;
                             background: $d_royal;
                         }
