@@ -1,6 +1,6 @@
 # Pomi - Pomodoro Timer
 
-Pomi is the app used a customizable pomodoro timer. It can help you to stay focus and be more productivity. It's your choice how long you want to study.
+Pomi is the app that used a customizable pomodoro timer. It can help you to stay focus and be more productive. It's your choice how long you want to study.
 
 ## How to use
 
